@@ -83,6 +83,8 @@ module Greenlight
       config.url_host = ENV['URL_HOST'] || ''
     end
 
+    config.serve_static_assets = true
+
     # Specify the email address that all mail is sent from
     config.smtp_sender = ENV['SMTP_SENDER'] || "notifications@example.com"
 

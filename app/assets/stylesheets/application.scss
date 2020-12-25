@@ -31,9 +31,9 @@
  */
 
 @import "tabler/variables";
-@import "bootstrap";
+@import "bootstrap5";
 @import "jquery-ui/sortable";
-@import "tabler-custom";
+// @import "tabler-custom";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "monolith.min.scss";
@@ -41,18 +41,20 @@
 
 @import "utilities/variables";
 @import "admins";
-@import "main";
+@import "main_new";
 @import "rooms";
 @import "sessions";
 @import "utilities/fonts";
 @import "users";
+@import "custom";
 
 * {
   outline: none !important;
 }
 
 html, body {
-  font-family: "Source Sans Pro" !important;
+  // font-family: "Source Sans Pro" !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
   position: relative;
   width: 100%;
   height: 100%;

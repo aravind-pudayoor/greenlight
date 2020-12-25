@@ -13,34 +13,21 @@
 # with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
 %>
 
-<div class="row mt-2">
+<div class="fr-auto pt-4">
+  <h6><%= title(subtitle) %></h6>
   <% if search %>
-    <div class="col-md-6">
-      <p class="subtitle"><%= title(subtitle) %></p>
-    </div>
-
-    <div class="col-md-6 mb-4">
-      <div id="search-bar" class="d-inline-block float-right">
-        <div class="input-group">
-          <input id="search-input" type="text" class="form-control" placeholder="<%= t("settings.search") %>..." value="<%= @search %>">
-          <% unless @search.blank? %>
-            <span id="clear-search" class="text-primary" onclick="clearSearch()">
-              <i class="fas fa-times"></i>
-            </span>
-          <% end %>
-          <span class="input-group-append">
-            <button class="btn btn-outline-primary" type="button" onclick="searchPage()">
-              <i class="fas fa-search"></i>
-            </button>
-          </span>
-        </div>
-      </div>
-    </div>
-  <% else %>
-    <div class="col-12">
-      <p class="subtitle"><%= title(subtitle) %></p>
+    <div id="search-bar">
+      <input id="search-input" type="search" class="form-control" placeholder="<%= t("settings.search") %>..." value="<%= @search %>">
+      <% unless @search.blank? %>
+        <span id="clear-search" class="text-primary" onclick="clearSearch()">
+          <i class="fas fa-times"></i>
+        </span>
+      <% end %>
+      <span class="input-group-append">
+        <button class="btn btn-outline-primary" type="button" onclick="searchPage()">
+          <i class="fas fa-search"></i>
+        </button>
+      </span>
     </div>
   <% end %>
 </div>
-
-<hr class="mt-0">

@@ -34,5 +34,11 @@
 //= require jquery-ui/widget
 //= require jquery-ui/widgets/sortable
 //= require pickr.min.js
+//= require bootstrap
+//= require popper
 //= require bootstrap-select.min.js
 //= require_tree .
+
+// $(function () {
+//   $('[data-toggle="tooltip"]').tooltip()
+// })
