@@ -1,4 +1,5 @@
-<% visibility = recording[:metadata][:"gl-listed"] == "true" ? t("recording.visibility.public") : t("recording.visibility.unlisted") %>
+<% listed = recording[:metadata][:"gl-listed"] %>
+<% visibility = listed == "true" ? t("recording.visibility.public") : t("recording.visibility.unlisted") %>
 <div class="d-grid gap-8">
   <div class="ratio ratio-16x9 bg-dark rounded-video">
     <video class="rounded-video">
@@ -44,7 +45,7 @@
               <div>
                 <div class="label-sm black-500-bg auto-fr gap-4" data-toggle="tooltip" data-placement="top" title="<%= visibility %>">
                   <svg width="18" height="18">
-                    <use xlink:href="<%= asset_path('svg-sprite') %>#eye" />
+                    <use xlink:href="<%= asset_path('svg-sprite') %>#eye<%= listed == "true" ? '' : '-off'%>" />
                   </svg>
                 </div>
               </div>
@@ -64,7 +65,7 @@
         <div class="dropdown-menu dropdown-menu-right">
           <% recording_links = "" %>
           <% p = recording[:playbacks].each do |p| recording_links.concat(p[:url] + "\n\n") if p.key?(:length) end %>
-          <% unless recording[:metadata][:"gl-listed"] == "true" %>
+          <% unless listed == "true" %>
             <%= button_to update_recording_path(meetingID: recording[:meetingID], record_id: recording[:recordID], state: "public"), class: "dropdown-item", "data-disable": "" do %>
               <i class="dropdown-icon fas fa-globe"></i> <%= t("recording.visibility.public") %>
             <% end %>
