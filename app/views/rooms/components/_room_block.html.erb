@@ -13,62 +13,65 @@
 # with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
 %>
 
-<div data-path="<%= update_settings_path(room) %>" data-room-access-code="<%= room.access_code %>" class="card room-block">
-  <div class="card-body p-1">
-    <table class="table table-hover table-vcenter text-wrap table-no-border">
-      <tbody class="no-border-top">
-        <td>
-          <span class="stamp stamp-md bg-primary">
-            <% if room == current_user.main_room %>
-              <i class="fas fa-home"></i>
-            <% else %>
-              <i class="fas fa-chalkboard-teacher"></i>
-            <% end %>
-          </span>
-        </td>
-        <td>
-          <div>
-            <h4 contenteditable="false" class="m-0 force-text-normal room-name-text" ><%= room.name %></h4>
-          </div>
-          <div style="display: none">
-            <input class="form-control input-sm w-100 h-4 room-name-editable" value="<%= room.name %>">
-          </div>
-          <div class="small text-muted">
-            <% if room.sessions > 0 %>
-              <i><%= t("room.last_session", session: recording_date(room.last_session)) %></i>
-            <% else %>
-              <i><%= t("room.no_sessions") %></i>
-            <% end %>
-          </div>
-        </td>
-        <td class="text-right">
-          <div class="item-action dropdown" data-display="static">
-            <a href="#" data-toggle="dropdown" data-display="static" class="icon">
-              <i class="fas fa-ellipsis-v px-4"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right dropdown-menu-md-left">
-              <a href="" data-toggle="modal" data-target="#createRoomModal" class="update-room dropdown-item" data-settings-path="<%= room_settings_path(room) %>">
-                <i class="dropdown-icon fas fa-cog"></i> <%= t("room.settings") %>
-              </a>
-              <% if preupload_allowed? %>
-                <a href="" data-toggle="modal" data-target="#preuploadPresentationModal" class="preupload-room dropdown-item" data-path="<%= preupload_presentation_path(room) %>" data-settings-path="<%= current_presentation_path(room) %>"  data-remove="<%= remove_presentation_path(room) %>">
-                  <i class="dropdown-icon fas fa-file-upload"></i> <%= t("room.add_presentation") %>
-                </a>
-              <% end %>
-              <% if shared_access_allowed %>
-                <a href="" data-toggle="modal" data-target="#shareRoomModal" class="share-room dropdown-item" data-path="<%= room_shared_access_path(room) %>" data-users-path="<%= room_shared_users_path(room) %>">
-                  <i class="dropdown-icon fas fa-users"></i> <%= t("room.share") %>
-                </a>
-              <% end %>
-              <% unless room == current_user.main_room %>
-                <a href="" data-toggle="modal" data-target="#deleteRoomModal" data-path="<%= room_path(room) %>" data-name="<%= room.name %>" class="delete-room dropdown-item">
-                  <i class="dropdown-icon far fa-trash-alt"></i> <%= t("delete") %>
-                </a>
-              <% end %>
-            </div>
-          </div>
-        </td>
-      </tbody>
-    </table>
+<% exceeds_limit = current_room_exceeds_limit(room)%>
+<div data-path="<%= update_settings_path(room) %>" data-room-access-code="<%= room.access_code %>" class="bg-white p-2 p-md-4 rounded-3 shadow-sm domain-list room-block">
+  <div class="domain-icon custom-element">
+    <i class="fas <%= room == current_user.main_room ? 'fa-home' : 'fa-chalkboard-teacher' %>"></i>
+  </div>
+  <div>
+    <h6 class="room-name-text"><%= room.name %></h6>
+    <div class="grid-col">
+      <div class="fs-6 text-muted">
+        <%= request.base_url + room.invite_path %>
+      </div>
+      <a href="#" class="_copy_invite" id="copy-invite-<%= index %>">
+        <svg width="24" height="24">
+          <use xlink:href="<%= asset_path('svg-sprite') %>#icon-tabler-copy" />
+        </svg>
+      </a>
+    </div>
+    <div class="f-14 text-body">
+      <% if room.sessions > 0 %>
+        <i><%= t("room.last_session", session: recording_date(room.last_session)) %></i>
+      <% else %>
+        <i><%= t("room.no_sessions") %></i>
+      <% end %>
+    </div>
+  </div>
+  <div class="grid-col gap-8 align-items-center">
+    <button type="button" class="btn btn-md btn-outline-dark" data-toggle="dropdown">
+        <svg width="24" height="24">
+          <use xlink:href="<%= asset_path('svg-sprite') %>#icon-id" />
+        </svg>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right dropdown-menu-md-left">
+      <a href="#" data-toggle="modal" data-target="#createRoomModal" class="update-room dropdown-item" data-settings-path="<%= room_settings_path(room) %>">
+        <i class="dropdown-icon fas fa-cog"></i> <%= t("room.settings") %>
+      </a>
+      <% if preupload_allowed? %>
+        <a href="" data-toggle="modal" data-target="#preuploadPresentationModal" class="preupload-room dropdown-item" data-path="<%= preupload_presentation_path(room) %>" data-settings-path="<%= current_presentation_path(room) %>"  data-remove="<%= remove_presentation_path(room) %>">
+          <i class="dropdown-icon fas fa-file-upload"></i> <%= t("room.add_presentation") %>
+        </a>
+      <% end %>
+      <% if shared_access_allowed %>
+        <a href="" data-toggle="modal" data-target="#shareRoomModal" class="share-room dropdown-item" data-path="<%= room_shared_access_path(room) %>" data-users-path="<%= room_shared_users_path(room) %>">
+          <i class="dropdown-icon fas fa-users"></i> <%= t("room.share") %>
+        </a>
+      <% end %>
+      <% unless room == current_user.main_room %>
+        <a href="" data-toggle="modal" data-target="#deleteRoomModal" data-path="<%= room_path(room) %>" data-name="<%= room.name %>" class="delete-room dropdown-item">
+          <i class="dropdown-icon far fa-trash-alt"></i> <%= t("delete") %>
+        </a>
+      <% end %>
+    </div>
+    <% if @room_running %>
+      <%= button_to t("room.join"), room_path(room), class: "btn btn-md btn-primary px-4", "data-disable": "" %>
+    <% else %>
+      <% unless exceeds_limit %>
+        <%= button_to t("room.start"), start_room_path(room), class: "btn btn-md btn-primary px-4", "data-disable": "" %>
+      <% end %>
+    <% end %>
+
+        <%# <button type="button" class="btn btn-md btn-primary px-4">Start</button> %>
   </div>
 </div>

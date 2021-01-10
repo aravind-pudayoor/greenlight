@@ -15,28 +15,35 @@
 
 <div class="modal fade" id="deleteRoomModal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content text-center">
+    <div class="modal-content">
       <div class="modal-body">
-        <div class="card-body p-6">
-          <div class="card-title">
-            <h3 id="delete-header"></h3>
+        <main class="w-680">
+          <div class="bg-white shadow p-4 rounded-3">
+            <div class="fr-auto pt-2 mb-4">
+              <h6 id="delete-header"></h6>
+              <svg width="24" height="24" data-dismiss="modal">
+                <use xlink:href="<%= asset_path('svg-sprite') %>#ic-close" />
+              </svg>
+            </div>
+
+            <div class="text-center py-4">
+              <button type="button" class="btn btn-info my-1 btn-del-room" data-dismiss="modal">
+                <%= t("modal.delete_room.keep") %>
+              </button>
+
+              <%= button_to "/", method: :delete, id: "delete-confirm", class: "btn btn-danger my-1 btn-del-room", "data-disable": "" do %>
+                <%= t("modal.delete_room.delete") %>
+              <% end %>
+            </div>
+
+            <div class="card-footer">
+              <p id="delete-footer">
+                <%= t("modal.delete_room.warning").html_safe %>
+                <%= t("modal.delete_room.recording_warning", recordings_num:"").html_safe %>
+              </p>
+            </div>
           </div>
-
-          <button type="button" class="btn btn-info my-1 btn-del-room" data-dismiss="modal">
-            <%= t("modal.delete_room.keep") %>
-          </button>
-
-          <%= button_to "/", method: :delete, id: "delete-confirm", class: "btn btn-danger my-1 btn-del-room", "data-disable": "" do %>
-            <%= t("modal.delete_room.delete") %>
-          <% end %>
-
-        </div>
-        <div class="card-footer">
-          <p id="delete-footer">
-            <%= t("modal.delete_room.warning").html_safe %>
-            <%= t("modal.delete_room.recording_warning", recordings_num:"").html_safe %>
-          </p>
-        </div>
+        </main>
       </div>
     </div>
   </div>
