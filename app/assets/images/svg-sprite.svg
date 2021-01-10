@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg">
     <defs>
-
         <symbol id="icon-id" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <circle cx="12" cy="12" r="1" />
@@ -18,7 +17,7 @@
             <rect x="3" y="6" width="12" height="12" rx="2" />
         </symbol>
         <symbol id="eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <circle cx="12" cy="12" r="2" />
             <path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7" />
         </symbol>
@@ -35,6 +34,38 @@
             <path d="M16 3.13a4 4 0 0 1 0 7.75" />
             <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
         </symbol>
+        <symbol id="ic-userplus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <circle cx="9" cy="7" r="4" />
+            <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+            <path d="M16 11l2 2l4 -4" />
+        </symbol>
+        <symbol id="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+        </symbol>
+        <symbol id="ic-checkbox" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <polyline points="9 11 12 14 20 6" />
+            <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
+        </symbol>
+        <symbol id="ic-login" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+            <path d="M20 12h-13l3 -3m0 6l-3 -3" />
+        </symbol>
+        <symbol id="ic-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <rect x="5" y="11" width="14" height="10" rx="2" />
+            <circle cx="12" cy="16" r="1" />
+            <path d="M8 11v-4a4 4 0 0 1 8 0v4" />
+        </symbol>
+        <symbol id="ic-unlock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <rect x="5" y="11" width="14" height="10" rx="2" />
+            <circle cx="12" cy="16" r="1" />
+            <path d="M8 11v-5a4 4 0 0 1 8 0" />
+        </symbol>
     </defs>
 </svg>
-

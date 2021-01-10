@@ -14,12 +14,12 @@
 %>
 
 <% exceeds_limit = current_room_exceeds_limit(room)%>
-<div data-path="<%= update_settings_path(room) %>" data-room-access-code="<%= room.access_code %>" class="bg-white p-2 p-md-4 rounded-3 shadow-sm domain-list">
+<div data-path="<%= update_settings_path(room) %>" data-room-access-code="<%= room.access_code %>" class="bg-white p-2 p-md-4 rounded-3 shadow-sm domain-list room-block">
   <div class="domain-icon custom-element">
     <i class="fas <%= room == current_user.main_room ? 'fa-home' : 'fa-chalkboard-teacher' %>"></i>
   </div>
   <div>
-    <h6><%= room.name %></h6>
+    <h6 class="room-name-text"><%= room.name %></h6>
     <div class="grid-col">
       <div class="fs-6 text-muted">
         <%= request.base_url + room.invite_path %>
@@ -45,7 +45,7 @@
         </svg>
     </button>
     <div class="dropdown-menu dropdown-menu-right dropdown-menu-md-left">
-      <a href="" data-toggle="modal" data-target="#createRoomModal" class="update-room dropdown-item" data-settings-path="<%= room_settings_path(room) %>">
+      <a href="#" data-toggle="modal" data-target="#createRoomModal" class="update-room dropdown-item" data-settings-path="<%= room_settings_path(room) %>">
         <i class="dropdown-icon fas fa-cog"></i> <%= t("room.settings") %>
       </a>
       <% if preupload_allowed? %>

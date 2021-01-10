@@ -186,6 +186,7 @@ en:
         view: View
     title: Organization Settings
     users:
+      add: Add User
       invite: Invite User
       edit:
         title: Edit User Details
