@@ -159,31 +159,11 @@ $(document).on('turbolinks:load', function(){
       copy.html("<i class='fas fa-check mr-1'></i>")
       setTimeout(function(){
         copy.removeClass('btn-success');
-        copy.html("<i class='fas fa-copy mr-1'></i>")
-        // copy.html("<svg width='24' height='24'><use xlink:href='<%= asset_path('svg-sprite') %>#icon-tabler-copy' /></svg>")
+        copy.html('<svg width="24" height="24"><use xlink:href="/assets/svg-sprite.svg#icon-tabler-copy" /></svg>')
       }, 1000)
     }
   })
 });
-
-
-
-// function copyInvite() {
-//   var _id = $(this).attr('id');
-//   console.log("id:"+_id);
-//   $('#invite-url').select()
-//   if (document.execCommand("copy")) {
-//     $('#invite-url').blur();
-//     copy = $("#"+_id)
-//     // copy.addClass('btn-success');
-//     // copy.html("<i class='fas fa-check mr-1'></i>" + getLocalizedString("copied"))
-//     copy.html("<i class='fas fa-check mr-1'></i>")
-//     setTimeout(function(){
-//       copy.removeClass('btn-success');
-//       copy.html("<i class='fas fa-copy mr-1'></i>" + getLocalizedString("copy"))
-//     }, 1000)
-//   }
-// }
 
 function copyAccess() {
   $('#copy-code').attr("type", "text")
