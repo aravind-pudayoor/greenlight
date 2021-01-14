@@ -21,7 +21,7 @@
   <div>
     <h6 class="room-name-text"><%= room.name %></h6>
     <div class="grid-col">
-      <div class="fs-6 text-muted">
+      <div class="fs-6 text-muted" id="invite-url-<%= index %>">
         <%= request.base_url + room.invite_path %>
       </div>
       <a href="#" class="_copy_invite" id="copy-invite-<%= index %>">
