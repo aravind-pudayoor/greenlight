@@ -146,8 +146,13 @@ $(document).on('turbolinks:load', function(){
 
   $("._copy_invite").click(function() {
     var _id = $(this).attr('id');
+    var url_id_index = _id.split("-").pop();
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($("#invite-url-"+url_id_index).text()).select();
+
     if (document.execCommand("copy")) {
-      // $('#invite-url').blur();
+      $temp.remove();
       copy = $("#"+_id)
       // copy.addClass('btn-success');
       // copy.html("<i class='fas fa-check mr-1'></i>" + getLocalizedString("copied"))
@@ -163,22 +168,22 @@ $(document).on('turbolinks:load', function(){
 
 
 
-function copyInvite() {
-  var _id = $(this).attr('id');
-  console.log("id:"+_id);
-  $('#invite-url').select()
-  if (document.execCommand("copy")) {
-    $('#invite-url').blur();
-    copy = $("#"+_id)
-    // copy.addClass('btn-success');
-    // copy.html("<i class='fas fa-check mr-1'></i>" + getLocalizedString("copied"))
-    copy.html("<i class='fas fa-check mr-1'></i>")
-    setTimeout(function(){
-      copy.removeClass('btn-success');
-      copy.html("<i class='fas fa-copy mr-1'></i>" + getLocalizedString("copy"))
-    }, 1000)
-  }
-}
+// function copyInvite() {
+//   var _id = $(this).attr('id');
+//   console.log("id:"+_id);
+//   $('#invite-url').select()
+//   if (document.execCommand("copy")) {
+//     $('#invite-url').blur();
+//     copy = $("#"+_id)
+//     // copy.addClass('btn-success');
+//     // copy.html("<i class='fas fa-check mr-1'></i>" + getLocalizedString("copied"))
+//     copy.html("<i class='fas fa-check mr-1'></i>")
+//     setTimeout(function(){
+//       copy.removeClass('btn-success');
+//       copy.html("<i class='fas fa-copy mr-1'></i>" + getLocalizedString("copy"))
+//     }, 1000)
+//   }
+// }
 
 function copyAccess() {
   $('#copy-code').attr("type", "text")
