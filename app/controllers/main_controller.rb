@@ -18,6 +18,9 @@
 
 class MainController < ApplicationController
   include Registrar
+
+  layout 'landing'
+
   # GET /
   def index
     # Store invite token

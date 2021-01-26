@@ -13,19 +13,31 @@
 # with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
 %>
 
-<div class="background">
-  <div class="container pt-9 pb-8">
-    <div class="row">
-      <div class="col-md-12 col-sm-12 text-center">
-        <h1 id="main-text" class="display-4 mb-4"> <%= t("landing.welcome").html_safe %></h1>
-        <p class="lead offset-lg-2 col-lg-8 col-sm-12 "><%= t("landing.about", href: link_to(t("greenlight"), "https://bigbluebutton.org/2018/07/09/greenlight-2-0/", target: "_blank", rel: "noopener")).html_safe %></p>
-        <%= link_to "https://www.youtube.com/watch?v=azbo8sSwdyY&feature=youtu.be", target: "_blank" do %>
-          <h4><%= t("landing.video") %> <i class="far fa-play-circle ml-1"></i></h4>
-        <% end %>
-      </div>
-
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
+  <div class="container" data-aos="fade-down" data-aos-delay="100">
+    <h1>Welcome to <span>acuconf</span>
+    </h1>
+    <h2>We are team of talanted designers making websites with Bootstrap</h2>
+    <div class="d-flex">
+      <a href="#about" class="btn-get-started scrollto">Get Started</a>
+      <a href="https://www.youtube.com/watch?v=azbo8sSwdyY&feature=youtu.be" class="venobox btn-watch-video" data-vbtype="video" data-autoplay="true"> Watch Video <i class="icofont-play-alt-2"></i></a>
     </div>
   </div>
-</div>
+  <div class="">
+    <%= image_tag("landing/header.svg", alt:"header svg") %>
+  </div>
+</section><!-- End Hero -->
 
-<%= render "main/components/features" %>
+<main id="main">
+  <%= render "main/components/clients" %>
+  <%= render "main/components/features" %>
+  <%= render "main/components/benefits" %>
+  <%= render "main/components/domains" %>
+  <%= render "main/components/testimonials" %>
+  <%= render "main/components/pricing" %>
+  <%= render "main/components/faq" %>
+  <%= render "main/components/about" %>
+  <%= render "main/components/team" %>
+  <%= render "main/components/contact" %>
+</main>
