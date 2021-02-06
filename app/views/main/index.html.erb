@@ -29,15 +29,10 @@
   </div>
 </section><!-- End Hero -->
 
+<% sections = %w[clients features benefits domains testimonials pricing faq about team contact] %>
+
 <main id="main">
-  <%= render "main/components/clients" %>
-  <%= render "main/components/features" %>
-  <%= render "main/components/benefits" %>
-  <%= render "main/components/domains" %>
-  <%= render "main/components/testimonials" %>
-  <%= render "main/components/pricing" %>
-  <%= render "main/components/faq" %>
-  <%= render "main/components/about" %>
-  <%= render "main/components/team" %>
-  <%= render "main/components/contact" %>
+  <% sections.each do |section| %>
+    <%= render "main/components/#{section}" %>
+  <% end %>
 </main>
