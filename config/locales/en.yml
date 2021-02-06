@@ -214,7 +214,7 @@ en:
         valid: Valid
       title: Manage Users
   add_to_google_calendar: "Add to Google Calendar"
-  bigbluebutton: AcuConf
+  page_title: AcuConf
   bigbluebutton_exception: Oops, there was an error when starting the meeting!
   cancel: Cancel
   cookies:

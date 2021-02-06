@@ -14,35 +14,11 @@
 %>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <% if Rails.configuration.google_analytics %>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async src="<%= google_analytics_url %>"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', "<%= ENV["GOOGLE_ANALYTICS_TRACKING_ID"] %>");
-      </script>
-    <% end %>
-
-    <title><%= yield(:page_title).present? ? yield(:page_title) : t("bigbluebutton") %></title>
-    <meta property="og:title" content="<%= yield(:page_title).present? ? yield(:page_title) : t("bigbluebutton") %>" />
-    <meta property="og:type" content="website" />
-    <meta property="og:description" content="<%= yield(:page_desc).present? ? yield(:page_desc) : t("landing.about", href: "Greenlight", locale: :en) %>" />
-    <meta property="og:url" content="<%= request.base_url %>" />
-    <meta property="og:image" content="<%= logo_image %>" />
-    <meta name="viewport" content= "width=device-width, user-scalable=no">
-    <%= csrf_meta_tags %>
-
-    <!-- Global javascript variables and helpers. -->
-    <script type="text/javascript">
-      window.GreenLight = {};
-      window.GreenLight.WEBSOCKET_HOST = "<%= ENV['WEBSOCKET_HOST'] %>"
-      window.GreenLight.RELATIVE_ROOT = "<%= relative_root %>"
-    </script>
+    <%= render "layouts/g_analytics" %>
+    <%= render "layouts/meta_tags" %>
+    <%= render "layouts/js_variables" %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -52,28 +28,12 @@
     <!-- Primary color styling -->
     <%= stylesheet_link_tag themes_primary_path %>
 
-    <script type="text/javascript">
-      // Include the correct translated strings for Javascript
-      window.I18n = <%= current_translations.to_json.html_safe %>
-      window.I18nFallback = <%= fallback_translations.to_json.html_safe %>
-    </script>
+    <%= render "layouts/js_translations" %>
   </head>
 
   <body data-controller="<%= params[:controller] %>" data-action="<%= params[:action] %>" data-relative-root="<%= Rails.configuration.relative_url_root || "/" %>">
-    
-
     <div class="all-wrapper">
       <%= render "shared/header" %>
-      <%# if bigbluebutton_endpoint_default? %>
-        <!--div class="alert alert-icon alert-danger text-center mb-0">
-          <div class="flash alert d-inline">
-            <i class="fas fa-exclamation-triangle"></i>
-            <p class="d-inline"><%= t("test_install",
-              href: link_to(t("docs").downcase, "http://docs.bigbluebutton.org/install/greenlight-v2.html#2-install-greenlight", target: "_blank", rel: "noopener")
-            ).html_safe %>
-          </div>
-        </div-->
-      <%# end %>
 
       <% unless Rails.configuration.banner_message.blank? %>
         <div class="alert alert-icon alert-danger text-center mb-0">

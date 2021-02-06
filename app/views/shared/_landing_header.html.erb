@@ -1,0 +1,22 @@
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center">
+    <h1 class="logo me-auto">
+      <%= link_to (current_user ? home_page : root_path), class: "logo" do %>
+        <%= image_tag('landing/logo.svg', alt:"logo") %>
+      <% end %>
+    </h1>
+    <nav class="nav-menu d-none d-lg-block">
+      <ul>
+        <li class="active"><%= link_to "Home", "#header" %></li>
+        <li><%= link_to "Features", "#Features" %></li>
+        <li><%= link_to "Benefits", "#Benefits" %></li>
+        <li><%= link_to "Domains", "#Domains" %></li>
+        <li><%= link_to "Plans", "#pricing" %></li>
+        <li><%= link_to "About", "#about" %></li>
+        <li><%= link_to "Team", "#team" %></li>
+        <li><%= link_to "Contact", "#contact" %></li>
+        <li><%= link_to t("login"), signin_path %></li>
+      </ul>
+    </nav><!-- .nav-menu -->
+  </div>
+</header><!-- End Header -->
