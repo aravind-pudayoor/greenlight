@@ -38,7 +38,3 @@
 //= require popper
 //= require bootstrap-select.min.js
 //= require_tree .
-
-// $(function () {
-//   $('[data-toggle="tooltip"]').tooltip()
-// })

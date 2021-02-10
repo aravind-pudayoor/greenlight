@@ -21,14 +21,6 @@
                  ↑
                 <% end %>
               </th>
-              <th class="text-left" data-header="provider" data-order="<%= @order_column == "provider" ? @order_direction : "none" %>">
-                <%= t("administrator.users.table.authenticator") %>
-                <% if @order_column == "provider" && @order_direction == "desc" %>
-                 ↓
-                <% elsif @order_column == "provider" && @order_direction == "asc" %>
-                 ↑
-                <% end %>
-              </th>
               <th class="text-center">
                 <%= t("administrator.users.table.role") %>
               </th>
@@ -51,7 +43,6 @@
                       <div class="small text-muted"><%= [t("administrator.users.table.created"), ": ", user.created_at].join %></div>
                     </td>
                     <td class="user-email"><%= user.email && user.email != "" ? user.email : user.username%></td>
-                    <td><%= user.provider %></td>
                     <td class="text-center">
                       <%= render "admins/components/admins_role", role: user.role %>
                     </td>

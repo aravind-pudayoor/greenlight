@@ -1,4 +1,4 @@
-//= require landing/vendor/jquery.min.js
+//= require jquery3
 //= require landing/vendor/bootstrap.bundle.min.js
 //= require landing/vendor/jquery.easing.min.js
 //= require landing/vendor/jquery.waypoints.min.js
