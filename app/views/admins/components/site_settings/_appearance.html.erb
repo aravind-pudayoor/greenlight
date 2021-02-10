@@ -14,20 +14,6 @@
 %>
 
 <div class="form-group">
-  <div class="row mb-2">
-    <div class="col-12">
-      <div class="form-group">
-        <label class="form-label"><%= t("administrator.site_settings.branding.title") %></label>
-        <label class="form-label text-muted"><%= t("administrator.site_settings.branding.info") %></label>
-        <div class="input-group">
-          <input id="branding-url" type="text" class="form-control" value="<%= logo_image %>">
-          <span class="input-group-append">
-            <button id="branding-image" onclick="changeBrandingImage('<%= admin_update_settings_path(setting: 'Branding Image') %>')" class="btn btn-primary" type="button"><%= t("administrator.site_settings.branding.change") %></button>
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="row">
     <div class="col-12">
       <div class="form-group">

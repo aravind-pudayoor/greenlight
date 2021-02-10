@@ -23,27 +23,27 @@
   <div class="bg-circle">
     <%= image_tag('dashboard.svg', alt:"") %>
   </div>
-  <div class="pe-2 pe-md-4">
+  <div class="pe-2 pe-md-4 main-list-scroll">
     <h1 class="text-primary fw-light pb-4">Hello <%= current_user.name %>!</h1>
-      <div class="w-680">
-        <div class="fr-auto pb-4">
-          <h5 class="fw-light p-0"> <strong>1</strong> <%= @room.name %></h5>
-          <button type="button" class="btn btn-success" id="create-room-block"  data-toggle="modal" data-target="#createRoomModal"><%= t("room.create_room") %></button>
-        </div>
-          <div id="room_block_container">
-            <% if current_user.role.get_permission("can_create_rooms") %>
-              <% current_user.ordered_rooms.each_with_index do |room, index| %>
-                <div class="d-grid gap-24">
-                  <%= link_to room do %>
-                    <%= render "rooms/components/room_block", room: room, index: index %>
-                  <% end %>
-                </div>
-              <% end %>
-            <% end %>
+    <div class="w-680 sub-list-height">
+      <div class="fr-auto pb-4">
+        <h5 class="fw-light p-0"> <strong>1</strong> <%= @room.name %></h5>
+        <button type="button" class="btn btn-success" id="create-room-block"  data-toggle="modal" data-target="#createRoomModal"><%= t("room.create_room") %></button>
       </div>
+      <div id="room_block_container">
+        <% if current_user.role.get_permission("can_create_rooms") %>
+          <% current_user.ordered_rooms.each_with_index do |room, index| %>
+            <div class="d-grid gap-16 list-scroll">
+              <%= link_to room do %>
+                <%= render "rooms/components/room_block", room: room, index: index %>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </main>
-
 
 <%= render "shared/modals/delete_room_modal" %>
 
