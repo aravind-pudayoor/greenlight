@@ -7,6 +7,7 @@
   --dark-400: #8C8C8C;
   --dark-100: #C7C7C7;
   --h-header: 62px;
+  --h-footer: 65px;
 }
 
 .main-pad {
@@ -150,6 +151,11 @@ h1, h2, h3, h4, h5, h6 {
   border-width: 2px;
 }
 
+.align-content-start {
+  -ms-flex-line-pack: start;
+      align-content: start;
+}
+
 .avatar-xs {
   width: 28px;
   height: 28px;
@@ -183,6 +189,7 @@ h1, h2, h3, h4, h5, h6 {
 .all-wrapper {
   background: var(--bg-light);
   height: 100vh;
+  overflow: auto;
 }
 
 .top-header {
@@ -252,9 +259,9 @@ h1, h2, h3, h4, h5, h6 {
 .dashboard-layout {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-  height: calc( 100% - var(--h-header));
+  -ms-grid-columns: 1fr minmax(600px, 1fr);
+      grid-template-columns: 1fr minmax(600px, 1fr);
+  height: calc( 100vh - (var(--h-header) + var(--h-footer)));
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -291,10 +298,14 @@ h1, h2, h3, h4, h5, h6 {
           align-items: center;
 }
 
+.bg-circle img {
+  width: 100%;
+}
+
 .recording-layout {
   display: -ms-grid;
   display: grid;
-  height: calc( 100% - var(--h-header));
+  height: calc( 100vh - (var(--h-header) + var(--h-footer)));
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: start;
@@ -359,12 +370,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .sub-list-height {
-  height: calc(100% - 80px);
+  height: calc( 100% - (var(--h-header) + var(--h-footer)));
 }
 
 .list-scroll {
   overflow: auto;
-  height: 100%;
+  // height: 100%;
   margin-right: -22px;
 }
 
