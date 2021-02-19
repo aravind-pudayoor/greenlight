@@ -397,3 +397,53 @@ h1, h2, h3, h4, h5, h6 {
 .signin-button {
   float: right;
 }
+
+
+.join-layout {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr minmax(360px, 1fr);
+      grid-template-columns: 1fr minmax(360px, 1fr);
+  height: 100vh;
+}
+
+.join-big-image {
+  height: 100%;
+  width: 100%;
+  background: image-url('hero-bg.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.join-content {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.join-inner {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  justify-items: center;
+  -ms-grid-columns: minmax(300px, 500px);
+      grid-template-columns: minmax(300px, 500px);
+}
+
+.join-inner-input {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  justify-items: center;
+  -ms-grid-columns: minmax(300px, 380px);
+      grid-template-columns: minmax(300px, 380px);
+}
