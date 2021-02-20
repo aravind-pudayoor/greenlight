@@ -36,10 +36,10 @@ class MainController < ApplicationController
     @contact = ContactForm.new(contact_params)
     @contact.request = request
     if @contact.deliver
-      flash.now[:notice] = 'Thank you for your message!'
+      flash.now[:success] = 'Thank you for your message!'
       render :index
     else
-      flash.now[:error] = 'Cannot send message.'
+      flash.now[:alert] = 'Cannot send message.'
       render :index
     end
   end
