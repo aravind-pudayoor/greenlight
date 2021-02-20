@@ -17,6 +17,8 @@
 # with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
 
 class MainController < ApplicationController
+  before_action :contact_params, only: [:create_contact]
+
   include Registrar
 
   layout 'landing'
@@ -25,7 +27,25 @@ class MainController < ApplicationController
   def index
     # Store invite token
     session[:invite_token] = params[:invite_token] if params[:invite_token] && invite_registration
+    @contact = ContactForm.new
 
     redirect_to home_page if current_user
+  end
+
+  def create_contact
+    @contact = ContactForm.new(contact_params)
+    @contact.request = request
+    if @contact.deliver
+      flash.now[:notice] = 'Thank you for your message!'
+      render :index
+    else
+      flash.now[:error] = 'Cannot send message.'
+      render :index
+    end
+  end
+
+  private
+  def contact_params
+    params.require(:contact_form).permit(:name, :email, :subject, :message)
   end
 end
