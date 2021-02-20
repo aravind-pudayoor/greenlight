@@ -29,6 +29,7 @@
 
   <body data-controller="<%= params[:controller] %>" data-action="<%= params[:action] %>" data-relative-root="<%= Rails.configuration.relative_url_root || "/" %>">
     <%= render "shared/landing_header" %>
+    <%= render 'shared/flash_messages' unless flash.empty? %>
     
     <%= yield %>
 

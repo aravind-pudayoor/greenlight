@@ -33,7 +33,9 @@
 
   <body data-controller="<%= params[:controller] %>" data-action="<%= params[:action] %>" data-relative-root="<%= Rails.configuration.relative_url_root || "/" %>">
     <div class="all-wrapper">
-      <%= render "shared/header" %>
+      <% unless params[:controller] == 'rooms' && params[:action] == 'show' %>
+        <%= render "shared/header" %>
+      <% end %>
 
       <% unless Rails.configuration.banner_message.blank? %>
         <div class="alert alert-icon alert-danger text-center mb-0">
@@ -46,7 +48,9 @@
       <%= render 'shared/flash_messages' unless flash.empty? %>
       
       <%= yield %>
-      <%= render "shared/footer" %>
+      <% unless params[:controller] == 'rooms' && params[:action] == 'show' %>
+        <%= render "shared/footer" %>
+      <% end %>
     </div>
   </body>
 </html>
