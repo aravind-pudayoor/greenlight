@@ -21,13 +21,14 @@
     <h2><%= t("administrator.site_settings.authentication.user-info") %></h2>
   <% elsif !valid_access_code %>
     <%= form_for :room, url: login_room_path(@room.uid) do |f| %>
-      <div class="input-group join-input">
+      <div class="form-floating mb-3 w-100">
         <%= f.text_field :access_code,
               required: true,
-              class: "form-control join-form",
+              class: "form-control mb-3",
               placeholder: t("room.enter_the_access_code"),
               value: "" ,
               autofocus: true %>
+        <label for="floatingInput"><%= t("room.enter_the_access_code") %></label>
         <span class="input-group-append">
           <%= f.submit t("room.login"), class: "btn text-white btn-lg btn-primary w-100" %>
         </span>
