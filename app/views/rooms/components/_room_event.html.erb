@@ -18,7 +18,7 @@
     <div class="join-big-image"></div>
     <div class="join-content">
       <div class="join-inner">
-        <a href="" class="logo"></a>
+        <%= link_to '', (current_user ? home_page : root_path), class: "logo" %>
         <h5 class="pt-4 text-body"><%= t("room.invited") %></h5> 
         <h4 class="pt-2"><%= title(@room.name) %></h4>
         <div class="join-inner-input pt-3">
