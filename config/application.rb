@@ -139,7 +139,8 @@ module Greenlight
     # DEFAULTS
 
     # Default branding image if the user does not specify one
-    config.branding_image_default = "https://github.com/aravind-pudayoor/greenlight/blob/html_integration/app/assets/images/logo.svg"
+    # config.branding_image_default = "https://github.com/aravind-pudayoor/greenlight/blob/html_integration/app/assets/images/logo.svg"
+    config.branding_image_default = "https://raw.githubusercontent.com/aravind-pudayoor/greenlight/997fa81350dd332d5651209f3e7cfd290c51b30e/app/assets/images/logo.svg"
 
     # Default primary color if the user does not specify one
     config.primary_color_default = "#467fcf"
