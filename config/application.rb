@@ -63,12 +63,6 @@ module Greenlight
       config.bigbluebutton_secret_default
     end
 
-    # Fix endpoint format if required.
-    #config.bigbluebutton_endpoint += "/" unless config.bigbluebutton_endpoint.ends_with?('/')
-    #config.bigbluebutton_endpoint += "api/" if config.bigbluebutton_endpoint.ends_with?('bigbluebutton/')
-    #config.bigbluebutton_endpoint +=
-    #  "bigbluebutton/api/" unless config.bigbluebutton_endpoint.ends_with?('bigbluebutton/api/')
-
     if config.loadbalanced_configuration
       # Settings for fetching credentials from a loadbalancer based on provider.
       config.loadbalancer_endpoint = ENV["LOADBALANCER_ENDPOINT"]
