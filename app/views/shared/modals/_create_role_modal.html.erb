@@ -15,29 +15,33 @@
 
 <div class="modal fade" id="createRoleModal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content text-center">
+    <div class="modal-content">
       <div class="modal-body">
-        <div class="card-body p-6">
-          <div class="card-title">
-            <h3><%= t("modal.create_role.title") %></h3>
+        <main class="w-680">
+          <div class="bg-white shadow p-4 rounded-3">
+            <div class="fr-auto pt-2 mb-4">
+              <h6><%= t("modal.create_role.title") %></h6>
+              <svg width="24" height="24" data-dismiss="modal">
+                <use xlink:href="<%= asset_path('svg-sprite.svg') %>#ic-close" />
+              </svg>
+            </div>
+            <%= form_for(:role, url: admin_new_role_path) do |f| %>
+              <div>
+                <div class="form-floating mb-3">
+                  <%= f.text_field :name, id: "createRoleName", class: "form-control text-center", placeholder: t("modal.create_role.name_placeholder"), autocomplete: :off, required: true %>
+                  <label for="floatingInput">New Role</label>
+                  <div class="invalid-feedback text-left"><%= t("modal.create_role.not_blank") %></div>
+                </div>
+              </div>
+              <div class="text-center py-4">
+                  <%= f.submit t("modal.create_role.create"), class: "btn btn-primary btn-block" %>
+              </div>
+            <% end %>
+            <div class="card-footer">
+              <p><%= t("modal.create_role.footer_text") %></p>
+            </div>
           </div>
-
-          <%= form_for(:role, url: admin_new_role_path) do |f| %>
-            <div class="input-icon mb-2">
-              <span class="input-icon-addon">
-                <i class="fas fa-user-tag"></i>
-              </span>
-              <%= f.text_field :name, id: "createRoleName", class: "form-control text-center", placeholder: t("modal.create_role.name_placeholder"), autocomplete: :off, required: true %>
-              <div class="invalid-feedback text-left"><%= t("modal.create_role.not_blank") %></div>
-            </div>
-            <div class="mt-4">
-                <%= f.submit t("modal.create_role.create"), class: "btn btn-primary btn-block" %>
-            </div>
-          <% end %>
-        </div>
-        <div class="card-footer">
-          <p><%= t("modal.create_role.footer_text") %></p>
-        </div>
+        </main>
       </div>
     </div>
   </div>

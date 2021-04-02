@@ -46,12 +46,12 @@ Rails.application.configure do
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = Uglifier.new(harmony: true)
-  # config.assets.css_compressor = :sass
+  config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
-  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
+  # `config.assets.` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
@@ -97,6 +97,7 @@ Rails.application.configure do
       password: ENV['SMTP_PASSWORD'],
       authentication: ENV['SMTP_AUTH'],
       enable_starttls_auto: ENV['SMTP_STARTTLS_AUTO'],
+      openssl_verify_mode: ENV['SMTP_OPENSSL_VERIFY_MODE'],
     }
   else
     {
@@ -104,6 +105,7 @@ Rails.application.configure do
       port: ENV["SMTP_PORT"],
       domain: ENV['SMTP_DOMAIN'],
       enable_starttls_auto: ENV['SMTP_STARTTLS_AUTO'],
+      openssl_verify_mode: ENV['SMTP_OPENSSL_VERIFY_MODE'],
     }
   end
 

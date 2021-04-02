@@ -1,0 +1,8 @@
+<title><%= yield(:page_title).present? ? yield(:page_title) : t("page_title") %></title>
+<meta property="og:title" content="<%= yield(:page_title).present? ? yield(:page_title) : t("page_title") %>" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="<%= yield(:page_desc).present? ? yield(:page_desc) : t("landing.about", href: "AcuConf", locale: :en) %>" />
+<meta property="og:url" content="<%= request.base_url %>" />
+<meta property="og:image" content="<%= logo_image %>" />
+<meta name="viewport" content= "width=device-width, user-scalable=no">
+<%= csrf_meta_tags %>

@@ -16,5 +16,10 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w(_primary_theme.scss
                                                  pickr.min.js
                                                  monolith.min.scss
+                                                 landing.js
+                                                 landing.scss
                                                  bootstrap-select.min.js
-                                                 bootstrap-select.min.css)
+                                                 bootstrap-select.min.css 
+                                                 svg-sprite.svg
+                                                 )
+Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/

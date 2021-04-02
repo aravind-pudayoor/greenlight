@@ -1,0 +1,44 @@
+<%
+# BigBlueButton open source conferencing system - http://www.bigbluebutton.org/.
+# Copyright (c) 2018 BigBlueButton Inc. and by respective authors (see below).
+# This program is free software; you can redistribute it and/or modify it under the
+# terms of the GNU Lesser General Public License as published by the Free Software
+# Foundation; either version 3.0 of the License, or (at your option) any later
+# version.
+#
+# BigBlueButton is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+# You should have received a copy of the GNU Lesser General Public License along
+# with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
+%>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= render "layouts/g_analytics" %>
+    <%= render "layouts/meta_tags" %>
+    <%= render "layouts/js_variables" %>
+
+    <%= stylesheet_link_tag 'landing', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= favicon_link_tag asset_path('favicon.ico') %>
+
+    <%= render "layouts/js_translations" %>
+  </head>
+
+  <body data-controller="<%= params[:controller] %>" data-action="<%= params[:action] %>" data-relative-root="<%= Rails.configuration.relative_url_root || "/" %>">
+    <%= render "shared/landing_header" %>
+    <%= render 'shared/flash_messages' unless flash.empty? %>
+    
+    <%= yield %>
+
+    <%= render "shared/landing_footer" %>
+
+    <div id="preloader"></div>
+
+	  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+    <%= javascript_include_tag 'landing', 'data-turbolinks-track': 'reload' %>
+  </body>
+</html>

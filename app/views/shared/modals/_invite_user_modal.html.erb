@@ -15,29 +15,36 @@
 
 <div class="modal fade" id="inviteModal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content text-center">
+    <div class="modal-content">
       <div class="modal-body">
-        <div class="card-body p-6">
-          <div class="card-title">
-            <h3><%= t("modal.invite_user.title") %></h3>
-          </div>
-
-          <%= form_for(:invite_user, url: invite_user_path) do |f| %>
-            <div class="input-icon mb-2">
-              <span class="input-icon-addon">
-                <i class="fas fa-envelope"></i>
-              </span>
-              <%= f.text_field :email, class: "form-control", value: "", placeholder: t("modal.invite_user.email_placeholder"), autocomplete: :off %>
-              <div class="invalid-feedback text-left"><%= t("modal.invite_user.not_blank") %></div>
+        <main class="w-680">
+          <div class="bg-white shadow p-4 rounded-3">
+            <div class="fr-auto pt-2 mb-4">
+              <h6><%= t("modal.invite_user.title") %></h6>
+              <svg width="24" height="24" data-dismiss="modal">
+                <use xlink:href="<%= asset_path('svg-sprite.svg') %>#ic-close" />
+              </svg>
             </div>
-          <div class="mt-4">
-            <%= f.submit t("modal.invite_user.send"), class:"btn btn-primary btn-block" %>
+
+            <%= form_for(:invite_user, url: invite_user_path) do |f| %>
+              <div>
+                <div class="form-floating mb-3">
+                  <%= f.text_field :email, class: "form-control", value: "", placeholder: t("modal.create_room.name_placeholder"), autocomplete: :off, required: true %>
+                  <label for="floatingInput">Invite User</label>
+                  <div class="invalid-feedback text-left"><%= t("modal.invite_user.not_blank") %></div>
+                </div>
+              </div>
+
+              <div class="text-center py-4">
+                <%= f.submit t("modal.invite_user.send"), class:"btn btn-primary btn-block" %>
+              </div>
+            <% end %>
+
+            <div class="card-footer">
+              <p><%= t("modal.invite_user.footer") %></p>
+            </div>
           </div>
-          <% end %>
-        </div>
-        <div class="card-footer">
-          <p><%= t("modal.invite_user.footer") %></p>
-        </div>
+        </main>
       </div>
     </div>
   </div>

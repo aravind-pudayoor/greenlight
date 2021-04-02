@@ -63,12 +63,6 @@ module Greenlight
       config.bigbluebutton_secret_default
     end
 
-    # Fix endpoint format if required.
-    config.bigbluebutton_endpoint += "/" unless config.bigbluebutton_endpoint.ends_with?('/')
-    config.bigbluebutton_endpoint += "api/" if config.bigbluebutton_endpoint.ends_with?('bigbluebutton/')
-    config.bigbluebutton_endpoint +=
-      "bigbluebutton/api/" unless config.bigbluebutton_endpoint.ends_with?('bigbluebutton/api/')
-
     if config.loadbalanced_configuration
       # Settings for fetching credentials from a loadbalancer based on provider.
       config.loadbalancer_endpoint = ENV["LOADBALANCER_ENDPOINT"]
@@ -82,6 +76,8 @@ module Greenlight
       # Configure which settings are available to user on room creation/edit after creation
       config.url_host = ENV['URL_HOST'] || ''
     end
+
+    config.serve_static_assets = true
 
     # Specify the email address that all mail is sent from
     config.smtp_sender = ENV['SMTP_SENDER'] || "notifications@example.com"
@@ -137,7 +133,8 @@ module Greenlight
     # DEFAULTS
 
     # Default branding image if the user does not specify one
-    config.branding_image_default = "https://raw.githubusercontent.com/bigbluebutton/greenlight/master/app/assets/images/logo_with_text.png"
+    # config.branding_image_default = "https://github.com/aravind-pudayoor/greenlight/blob/html_integration/app/assets/images/logo.svg"
+    config.branding_image_default = "https://raw.githubusercontent.com/aravind-pudayoor/greenlight/997fa81350dd332d5651209f3e7cfd290c51b30e/app/assets/images/logo.svg"
 
     # Default primary color if the user does not specify one
     config.primary_color_default = "#467fcf"

@@ -143,21 +143,27 @@ $(document).on('turbolinks:load', function(){
       removePreuploadPresentation($(this).data("remove"))
     })
   }
-});
 
-function copyInvite() {
-  $('#invite-url').select()
-  if (document.execCommand("copy")) {
-    $('#invite-url').blur();
-    copy = $("#copy-invite")
-    copy.addClass('btn-success');
-    copy.html("<i class='fas fa-check mr-1'></i>" + getLocalizedString("copied"))
-    setTimeout(function(){
-      copy.removeClass('btn-success');
-      copy.html("<i class='fas fa-copy mr-1'></i>" + getLocalizedString("copy"))
-    }, 1000)
-  }
-}
+  $("._copy_invite").click(function() {
+    var _id = $(this).attr('id');
+    var url_id_index = _id.split("-").pop();
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($("#invite-url-"+url_id_index).text()).select();
+
+    if (document.execCommand("copy")) {
+      $temp.remove();
+      copy = $("#"+_id)
+      // copy.addClass('btn-success');
+      // copy.html("<i class='fas fa-check mr-1'></i>" + getLocalizedString("copied"))
+      copy.html("<i class='fas fa-check mr-1'></i>")
+      setTimeout(function(){
+        copy.removeClass('btn-success');
+        copy.html('<svg width="24" height="24"><use xlink:href="/assets/svg-sprite.svg#icon-tabler-copy" /></svg>')
+      }, 1000)
+    }
+  })
+});
 
 function copyAccess() {
   $('#copy-code').attr("type", "text")
